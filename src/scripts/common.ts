@@ -3,5 +3,5 @@ import { LibraryRunner } from "./library-runner";
 
 export const runnerResolver = new RunnerResolver({
     runners: [LibraryRunner],
-    workerPath: 'worker-injector.js'
+    workerPath: 'worker-injector.js',
 });

@@ -25,7 +25,7 @@ module.exports = {
         extensions : ['.js', '.ts']
     },
     optimization: {
-        splitChunks: { // For a common chunk between worker and main area
+        splitChunks: { // Configuration for a common chunk between worker and main area
             cacheGroups: {
               commons: {
                 name: 'commons',
@@ -43,11 +43,11 @@ module.exports = {
               "commons.js",
               "worker.js",
             ],
-            isAsync: true,
           }),
         new HtmlWebpackPlugin({
-            title: 'Worker Runner Webpack example',
+            template: './src/index.html',
             excludeChunks: ['worker'],
+            inject: 'head',
         }),
     ],
     devtool: 'source-map',

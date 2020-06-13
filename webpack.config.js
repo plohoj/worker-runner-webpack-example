@@ -14,11 +14,6 @@ module.exports = {
                 test: /\.ts$/,
                 loader: 'ts-loader'
             },
-            { // For ECMAScript modules to work
-                test: /\.mjs$/,
-                include: /node_modules/,
-                type: "javascript/auto"
-            }
         ],
     },
     resolve: {

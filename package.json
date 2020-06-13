@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Example configuration webpack for Worker Runner lib",
   "scripts": {
-    "start": "webpack-dev-server --watch", 
+    "start": "webpack-dev-server --watch",
     "build": "webpack-cli --mode=production"
   },
   "repository": {
@@ -30,6 +30,6 @@
     "worker-injector-generator-plugin": "^1.0.3"
   },
   "dependencies": {
-    "@worker-runner/promise": "^0.7.1"
+    "@worker-runner/promise": "^0.7.2"
   }
 }

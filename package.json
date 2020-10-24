@@ -20,16 +20,20 @@
   },
   "homepage": "https://github.com/plohoj/worker-runner-webpack-example#readme",
   "devDependencies": {
-    "@types/webpack": "^4.41.17",
-    "html-webpack-plugin": "^4.3.0",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@types/webpack": "^4.41.23",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "html-webpack-plugin": "^4.5.0",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "worker-injector-generator-plugin": "^1.0.3"
+    "worker-injector-generator-plugin": "^1.0.4"
   },
   "dependencies": {
-    "@worker-runner/promise": "^0.7.2"
+    "@worker-runner/promise": "^0.8.0"
   }
 }

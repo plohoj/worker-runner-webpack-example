@@ -1,3 +1,4 @@
-import { runnerResolver } from "./common";
+import { WorkerRunnerResolver } from "@worker-runner/promise";
+import { runners } from "./common";
 
-runnerResolver.runInWorker();
+new WorkerRunnerResolver({ runners }).run();

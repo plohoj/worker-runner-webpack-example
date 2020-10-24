@@ -1,10 +1,12 @@
-import { runnerResolver } from "./common";
+import { NodeRunnerResolver } from "@worker-runner/promise";
+import { runners } from "./common";
 import { LibraryRunner } from "./library-runner";
 
 const MAIN_AREA_LOG_STYLE = 'background-color: #33CC33; padding: 4px; border-radius: 3px; color: black;';
 const BOOK_LOG_STYLE = 'font-weight: bold;';
 
 async function main() {
+    const runnerResolver = new NodeRunnerResolver({runners, workerPath: 'worker-injector.js',});
     await runnerResolver.run();
     const libraryRunner = await runnerResolver.resolve(LibraryRunner, ['Book №1']);
 

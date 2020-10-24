@@ -12,8 +12,41 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts-loader'
+                exclude: /node_modules/,
+                use: [
+                    // <------ For IE11
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                ['@babel/preset-env', {
+                                    useBuiltIns: 'usage',
+                                    corejs: 3,
+                                }],
+                            ],
+                        },
+                    },
+                    // ------>
+                    'ts-loader',
+                ]
             },
+            // <------ For IE11
+            {
+                test: /\.js$/,
+                exclude: /node_modules[\\\/](?!@worker-runner)/,
+                loader: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', {
+                                useBuiltIns: 'usage',
+                                corejs: 3,
+                            }],
+                        ],
+                    },
+                },
+            }
+            // ------>
         ],
     },
     resolve: {
@@ -45,7 +78,7 @@ module.exports = {
             inject: 'head',
         }),
     ],
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     devServer: {
         port: 3400,
     },

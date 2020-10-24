@@ -50,7 +50,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions : ['.js', '.ts']
+        extensions : ['.js', '.ts'],
     },
     optimization: {
         splitChunks: { // Configuration for a common chunk between worker and main area
@@ -63,7 +63,7 @@ module.exports = {
             }
         }
     },
-    output: {filename: '[name].js'},
+    output: { filename: '[name].js' },
     plugins: [
         new WorkerInjectorGeneratorPlugin({ // For a common chunk between worker and main area
             name: "worker-injector.js",
@@ -79,7 +79,5 @@ module.exports = {
         }),
     ],
     devtool: 'inline-source-map',
-    devServer: {
-        port: 3400,
-    },
+    devServer: { port: 3400 },
 };

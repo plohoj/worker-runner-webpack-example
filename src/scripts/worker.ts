@@ -1,4 +1,5 @@
-import { WorkerRunnerResolver } from "@worker-runner/promise";
+import { HostRunnerResolver } from "@worker-runner/promise";
 import { runners } from "./common";
 
-new WorkerRunnerResolver({ runners }).run();
+new HostRunnerResolver({ runners }).run();
+

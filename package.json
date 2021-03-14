@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Example configuration webpack for Worker Runner lib",
   "scripts": {
-    "start": "webpack-dev-server --watch",
-    "build": "webpack-cli --mode=production"
+    "start": "webpack serve",
+    "build": "webpack build"
   },
   "repository": {
     "type": "git",
@@ -20,20 +20,22 @@
   },
   "homepage": "https://github.com/plohoj/worker-runner-webpack-example#readme",
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "@types/webpack": "^4.41.23",
-    "babel-loader": "^8.1.0",
-    "core-js": "^3.6.5",
-    "html-webpack-plugin": "^4.5.0",
-    "ts-loader": "^7.0.5",
-    "typescript": "^3.9.7",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "worker-injector-generator-plugin": "^1.0.4"
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@types/webpack": "^4.41.26",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^8.0.0",
+    "core-js": "^3.9.1",
+    "html-webpack-plugin": "^5.3.1",
+    "ts-loader": "^8.0.18",
+    "typescript": "^4.2.3",
+    "webpack": "^5.25.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@worker-runner/promise": "^0.8.0"
+    "@worker-runner/promise": "^0.9.1",
+    "es6-promise": "^4.2.8"
   }
 }

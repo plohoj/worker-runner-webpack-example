@@ -1,38 +1,26 @@
-import { NodeRunnerResolver } from "@worker-runner/promise";
+import { ClientRunnerResolver } from "@worker-runner/promise";
 import { runners } from "./common";
 import { LibraryRunner } from "./library-runner";
-
-const MAIN_AREA_LOG_STYLE = 'background-color: #33CC33; padding: 4px; border-radius: 3px; color: black;';
-const BOOK_LOG_STYLE = 'font-weight: bold;';
+import { logger } from "./logger";
 
 async function main() {
-    const runnerResolver = new NodeRunnerResolver({runners, workerPath: 'worker-injector.js',});
+    const runnerResolver = new ClientRunnerResolver({
+        runners,
+        connection: new Worker(new URL('./worker', import.meta.url)),
+    });
     await runnerResolver.run();
+
     const libraryRunner = await runnerResolver.resolve(LibraryRunner, ['Book №1']);
+    console.log('\n');
 
+    logger.mainArea('Adding "Book №2" to library:');
     await libraryRunner.addBook('Book №2');
+    console.log('\n');
 
-    console.log('%cMain Area:%c "%cBook №2%c" is exist:',
-        MAIN_AREA_LOG_STYLE, '', BOOK_LOG_STYLE, '',
-        await libraryRunner.checkBook('Book №2'),
-    );
+    logger.mainArea('Book №2" is exist:', await libraryRunner.checkBook('Book №2'));
+    console.log('\n');
 
-    const reservedBookPromise = libraryRunner.reserveBook('Book №2', 3);
-
-    console.log('%cMain Area:%c "%cBook №2%c" is exist after reserve:',
-        MAIN_AREA_LOG_STYLE, '', BOOK_LOG_STYLE, '',
-        await libraryRunner.checkBook('Book №2')
-    );
-
-    await reservedBookPromise;
-    console.log('%cMain Area:%c Reservation for book "%cBook №2%c" completed',
-        MAIN_AREA_LOG_STYLE, '', BOOK_LOG_STYLE, '',
-    );
-
-    console.log('%cMain Area:%c "%cBook №2%c" is exist after awaiting reserve:',
-        MAIN_AREA_LOG_STYLE, '', BOOK_LOG_STYLE, '',
-        await libraryRunner.checkBook('Book №2'),
-    );
+    logger.mainArea('"Book №2" is exist after delay:', await libraryRunner.checkBookWithDelay('Book №2', 3));
 
     await libraryRunner.destroy();
 }

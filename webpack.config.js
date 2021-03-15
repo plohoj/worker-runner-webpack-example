@@ -43,9 +43,19 @@ module.exports = {
         ],
     },
     target: ['web', 'es5'], // For IE11
-    mode: 'development',
     resolve: {
         extensions : ['.js', '.ts'],
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /src[\\/]scripts[\\/]common/,
+                    minSize: 0,
+                    chunks: 'all',
+                },
+            },
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -57,16 +67,14 @@ module.exports = {
         new webpack.BannerPlugin({
             raw: true,
             banner: `if (typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope && typeof self.Promise === "undefined") {
-                importScripts("/polyfill/es6-promise.auto.min.js");
+                importScripts("/polyfill/es6-promise.auto.js");
             }`,
         }),
         new CopyWebpackPlugin({
             patterns: [
-              { from: "./node_modules/es6-promise/dist/es6-promise.auto.min.js", to: "./polyfill/es6-promise.auto.min.js" },
+              { from: "./node_modules/es6-promise/dist/es6-promise.auto.js", to: "./polyfill/es6-promise.auto.js" },
             ],
         }),
         // ------>
     ],
-    devtool: 'inline-source-map',
-    devServer: { port: 3400 },
 };

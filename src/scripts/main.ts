@@ -1,7 +1,7 @@
 import { ClientRunnerResolver } from "@worker-runner/promise";
-import { runners } from "./common";
-import { LibraryRunner } from "./library-runner";
-import { logger } from "./logger";
+import { runners } from "./common/runners";
+import { LibraryRunner } from "./common/library-runner";
+import { logger } from "./common/logger";
 
 async function main() {
     const runnerResolver = new ClientRunnerResolver({

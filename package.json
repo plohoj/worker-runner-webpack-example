@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Example configuration webpack for Worker Runner lib",
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack build"
+    "start": "webpack serve --mode=development",
+    "build": "webpack build --mode=production"
   },
   "repository": {
     "type": "git",

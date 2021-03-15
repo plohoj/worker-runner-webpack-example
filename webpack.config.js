@@ -2,6 +2,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+const publicPath = '';
+
 /** @type {import('webpack').RuleSetRule['use']} */
 const babelLoader = {
     loader: 'babel-loader',
@@ -67,7 +69,7 @@ module.exports = {
         new webpack.BannerPlugin({
             raw: true,
             banner: `if (typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope && typeof self.Promise === "undefined") {
-                importScripts("/polyfill/es6-promise.auto.js");
+                importScripts("${publicPath}/polyfill/es6-promise.auto.js");
             }`,
         }),
         new CopyWebpackPlugin({

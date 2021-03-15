@@ -1,5 +1,5 @@
 if (typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope && typeof self.Promise === "undefined") {
-                importScripts("/polyfill/es6-promise.auto.js");
+                importScripts("https://plohoj.github.io/worker-runner-webpack-example/polyfill/es6-promise.auto.js");
             }
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").

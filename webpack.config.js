@@ -62,7 +62,6 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            excludeChunks: ['worker'],
             inject: 'head',
         }),
         // <------ For IE11
